@@ -5,12 +5,14 @@
       .search-box
         v-select(label="ジャンル検索" :items="genre" multiple)
       .search-box
-        v-text-field(label="キーワード検索" prepend-inner-icon="search")
+        v-text-field(label="キーワード検索" prepend-inner-icon="search" v-model="keyword")
+    p {{ message }}
     v-timeline.timeline
-      TimelineCard(v-for="(content, index) in contents" :content="content" :key="index")
+      TimelineCard(v-for="(content, index) in filteredContents" :content="content" :key="index")
 </template>
 
 <script>
+import _ from 'lodash'
 import TimelineCard from './parts/TimelineCard.vue'
 
 export default {
@@ -31,16 +33,50 @@ export default {
           title: '大学入学',
           text: 'やったーーーーーーー',
           date: '2013',
+          color: 'green'
+        },
+        {
+          title: 'エレクトーンを始める',
+          text: '楽しい',
+          date: '1999',
           color: 'blue'
         },
         {
           title: '誕生',
           text: 'いえーーーーーーい',
           date: '1994',
-          color: 'green'
+          color: 'red'
         }
       ],
-      genre: ['IT', '建築', '趣味']
+      filteredContents: null,
+      genre: ['IT', '建築', '趣味'],
+      keyword: '',
+      message: '　'
+    }
+  },
+  methods: {
+    getAnswer: function() {
+      if (this.keyword === '') {
+        this.message = ''
+        this.filteredContents = this.contents
+        return
+      }
+      this.message = ''
+      this.filteredContents = this.contents.filter( content => {
+          return content.title.indexOf(this.keyword) != -1
+            || content.text.indexOf(this.keyword) != -1
+            || content.date.indexOf(this.keyword) != -1
+        })
+    }
+  },
+  created: function() {
+    this.filteredContents = this.contents
+    this.debouncedGetAnswer = _.debounce(this.getAnswer, 1000)
+  },
+  watch: {
+    keyword: function() {
+      this.message = 'Waiting for you to stop typing...'
+      this.debouncedGetAnswer()
     }
   }
 };
