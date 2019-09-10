@@ -6,7 +6,7 @@
         v-select(label="ジャンル検索" :items="genre" multiple)
       .search-box
         v-text-field(label="キーワード検索" prepend-inner-icon="search")
-    v-timeline
+    v-timeline.timeline
       TimelineCard(v-for="(content, index) in contents" :content="content" :key="index")
 </template>
 
@@ -58,5 +58,8 @@ export default {
 .search-box {
   max-width: 30vw;
   margin: 12px;
+}
+.timeline {
+  width: 60vw;
 }
 </style>
