@@ -4,8 +4,10 @@
       v-layout(wrap)
         v-flex(xs12 sm6 md3)
           v-card.card
-            ul
-              li(v-for="data in githubData") {{ data.name }}
+            v-list-item(v-for="data in githubData")
+              v-list-item-content
+                v-list-item-title {{ data.name }}
+                v-list-item-subtitle(small) {{ data.description }}
         v-flex(xs12 sm6 md3)
           v-card.card
             a(class="qiita" href="https://qiita.com/jonpili" data-qiita-widget data-username="jonpili" data-hide-footer) Qiita投稿
@@ -15,10 +17,6 @@
         v-flex(xs12 sm6 md3)
           v-card.card
             a(class="twitter-timeline" data-height="400" href="https://twitter.com/RealTweet_Joe?ref_src=twsrc%5Etfw") Tweets by RealTweet_Joe
-        v-flex(xs12 sm12 md12)
-          v-card.card
-            a.frame(href="https://github.com/JoeTakasuna" target="_blank")
-              img.img(src="https://grass-graph.moshimo.works/images/JoeTakasuna.png")
 </template>
 
 <script>
@@ -29,7 +27,6 @@ export default {
   data () {
     return {
       items: null,
-      message: '',
       githubData: null
     }
   },
@@ -37,12 +34,6 @@ export default {
     axios.get('https://api.github.com/users/JoeTakasuna/repos')
       .then(response => {
         this.githubData = response.data
-      })
-      .catch(error => {
-        this.message = 'Error!' + error
-      })
-      .finally(() => { // これ可能？
-        this.message = ''
       })
   },
   mounted: function() {
@@ -76,13 +67,5 @@ export default {
 <style scoped>
 .card {
   margin: 6px;
-}
-.frame {
-  display: flex;
-  justify-content: center;
-}
-.img {
-  margin: 6px;
-  max-width: 100%;
 }
 </style>
