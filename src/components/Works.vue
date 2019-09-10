@@ -11,6 +11,7 @@
 </template>
 
 <script>
+import _ from 'lodash'
 import WorkCard from './parts/WorkCard.vue'
 
 export default {

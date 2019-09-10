@@ -30,6 +30,33 @@ export default {
       githubData: null
     }
   },
+  methods: {
+    reflectScript: function() {
+      if (!document.getElementById('qiita-wjs')) {
+        (function(d, s, id) {
+          var js,
+            fjs = d.getElementsByTagName(s)[0]
+          if (d.getElementById(id)) return
+          js = d.createElement(s)
+          js.id = id
+          js.src = 'https://qiita-widget.suin.io/widget.js'
+          fjs.parentNode.insertBefore(js, fjs)
+        })(document, 'script', 'qiita-wjs')
+      }
+
+      if (!document.getElementById('twitter-wjs')) {
+        (function(d, s, id) {
+          var js,
+            fjs = d.getElementsByTagName(s)[0]
+          if (d.getElementById(id)) return
+          js = d.createElement(s)
+          js.id = id
+          js.src = 'https://platform.twitter.com/widgets.js'
+          fjs.parentNode.insertBefore(js, fjs)
+        })(document, 'script', 'twitter-wjs')
+      }
+    }
+  },
   created: function() {
     axios.get('https://api.github.com/users/JoeTakasuna/repos')
       .then(response => {
@@ -37,29 +64,10 @@ export default {
       })
   },
   mounted: function() {
-    if (!document.getElementById('qiita-wjs')) {
-      (function(d, s, id) {
-        var js,
-          fjs = d.getElementsByTagName(s)[0]
-        if (d.getElementById(id)) return
-        js = d.createElement(s)
-        js.id = id
-        js.src = 'https://qiita-widget.suin.io/widget.js'
-        fjs.parentNode.insertBefore(js, fjs)
-      })(document, 'script', 'qiita-wjs')
-    }
-
-    if (!document.getElementById('twitter-wjs')) {
-      (function(d, s, id) {
-        var js,
-          fjs = d.getElementsByTagName(s)[0]
-        if (d.getElementById(id)) return
-        js = d.createElement(s)
-        js.id = id
-        js.src = 'https://platform.twitter.com/widgets.js'
-        fjs.parentNode.insertBefore(js, fjs)
-      })(document, 'script', 'twitter-wjs')
-    }
+    this.reflectScript()
+  },
+  updated: function() {
+    this.reflectScript()
   }
 }
 </script>
