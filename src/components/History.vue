@@ -8,7 +8,7 @@
         v-text-field(:loading="loading" label="キーワード検索" prepend-inner-icon="search" v-model="keyword")
     v-timeline.timeline
       transition-group.card-area(name="flip")
-        TimelineCard(v-for="(content, index) in filteredContents" :content="content" :key="index")
+        TimelineCard(v-for="content in filteredContents" :key="content.id" :content="content")
 </template>
 
 <script>
@@ -24,24 +24,28 @@ export default {
     return {
       contents: [
         {
+          id: 1,
           title: 'サイト作成',
           text: 'わーーーーい',
           date: '2019',
           color: 'red'
         },
         {
+          id: 2,
           title: '大学入学',
           text: 'やったーーーーーーー',
           date: '2013',
           color: 'green'
         },
         {
+          id: 3,
           title: 'エレクトーンを始める',
           text: '楽しい',
           date: '1999',
           color: 'blue'
         },
         {
+          id: 4,
           title: '誕生',
           text: 'いえーーーーーーい',
           date: '1994',
@@ -99,12 +103,9 @@ export default {
   width: 60vw;
 }
 .flip-move {
-  transition: opacity 500ms, transform 1s;
+  transition: transform 1s;
 }
-.flip-enter, .flip-leave-to {
+/* .flip-enter, .flip-leave-to {
   opacity: 0;
-}
-.flip-leave-active {
-  position: absolute;
-}
+} */
 </style>

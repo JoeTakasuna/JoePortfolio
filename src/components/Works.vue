@@ -7,7 +7,7 @@
       .search-box
         v-text-field(:loading="loading" label="キーワード検索" prepend-inner-icon="search" v-model="keyword")
     transition-group.card-area(name="flip")
-        WorkCard(v-for="content in filteredContents" :key="content.id" :content="content" width="240px" height="240px")
+      WorkCard(v-for="content in filteredContents" :key="content.id" :content="content" width="240px" height="240px")
 </template>
 
 <script>

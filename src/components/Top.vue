@@ -2,21 +2,15 @@
   .container
     v-btn(@click="shuffle") Shuffle
     transition-group.group(name="flip-list")
-      //- v-card.card(
-      //-   v-for="item in items"
-      //-   :key="item"
-      //-   ) {{ item }}
-      //- WorkCard(v-for="(content, index) in filteredContents" :key="index" :content="content" width="240px" height="240px")
-      v-card.card(v-for="(content, index) in filteredContents" :key="content" :content="content" width="240px" height="240px")
-        v-img(:src="content.img")
-        v-card-title {{ content.title }}
-        v-card-text {{ content.text }}
+      v-card.card(
+        v-for="item in items"
+        :key="item"
+        ) {{ item }}
 </template>
 
 <script>
-import WorkCard from './parts/WorkCard.vue'
-
 import _ from 'lodash'
+import WorkCard from './parts/WorkCard.vue'
 
 export default {
   name: 'Top',
@@ -25,29 +19,12 @@ export default {
   },
   data () {
     return {
-      items: [1,2,3,4,5,6,7,8,9],
-      filteredContents: [
-        {
-          title: '酒場',
-          text: 'おさけがのめます',
-          img: require('@/assets/works/1.jpg'),
-        },
-        {
-          title: '遺跡',
-          text: 'ひみつがあります',
-          img: require('@/assets/works/2.jpg'),
-        },
-        {
-          title: '火山',
-          text: 'だいちをつくります',
-          img: require('@/assets/works/3.jpg'),
-        }
-      ],
+      items: [1,2,3,4,5,6,7,8,9]
     }
   },
   methods: {
     shuffle: function () {
-      this.filteredContents = _.shuffle(this.filteredContents)
+      this.items = _.shuffle(this.items)
     }
   }
 };
@@ -63,6 +40,6 @@ export default {
   transition: transform 1s;
 }
 .card {
-  min-width: 60px;
+  min-width: 240px;
 }
 </style>
