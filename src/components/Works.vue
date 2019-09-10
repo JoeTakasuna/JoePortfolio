@@ -7,8 +7,7 @@
       .search-box
         v-text-field(label="キーワード検索" prepend-inner-icon="search" v-model="keyword")
     p {{ message }}
-    v-btn(@click="shuffle") Shuffle
-    transition-group.card-area(name="flip-list")
+    transition-group.card-area(name="flip")
         WorkCard(v-for="content in filteredContents" :key="content.id" :content="content" width="240px" height="240px")
 </template>
 
@@ -51,16 +50,16 @@ export default {
   },
   methods: {
     getAnswer: function() {
-      if (this.keyword === '　') {
+      if (this.keyword === '') {
         this.message = '　'
         this.filteredContents = this.contents
         return
       }
-      this.message = ''
-      this.filteredContents = [this.contents[1], this.contents[2]]
-    },
-    shuffle: function () {
-      this.filteredContents = _.shuffle(this.filteredContents)
+      this.message = '　'
+      this.filteredContents = this.contents.filter( content => {
+        return content.title.indexOf(this.keyword) != -1
+          || content.text.indexOf(this.keyword) != -1
+      })
     }
   },
   created: function() {
@@ -89,7 +88,13 @@ export default {
   flex-direction: row;
   flex-wrap: wrap;
 }
-.flip-list-move {
-  transition: transform 1s;
+.flip-move {
+  transition: opacity 500ms, transform 1s;
+}
+.flip-enter, .flip-leave-to {
+  opacity: 0;
+}
+.flip-leave-active {
+  position: absolute;
 }
 </style>
