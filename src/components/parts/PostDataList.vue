@@ -1,13 +1,18 @@
 <template lang="pug">
   v-card
-    v-container
+    v-container.container
       v-layout(wrap)
         v-flex(xs12 sm6 md3)
           v-card.card
-            v-list-item(v-for="data in githubData")
-              v-list-item-content
-                v-list-item-title {{ data.name }}
-                v-list-item-subtitle(small) {{ data.description }}
+            .logo
+              v-img(src="@/assets/github.png")
+            v-divider
+            v-container(style="max-height: 356px; background-color: white;" class="overflow-y-auto")
+              v-list-item(v-for="data in githubData")
+                v-list-item-content
+                  a(:href="data.svn_url" target="_blank")
+                    v-list-item-title {{ data.name }}
+                  v-list-item-subtitle.text {{ data.description }}
         v-flex(xs12 sm6 md3)
           v-card.card
             a(class="qiita" href="https://qiita.com/jonpili" data-qiita-widget data-username="jonpili" data-hide-footer) Qiita投稿
@@ -58,7 +63,7 @@ export default {
     }
   },
   created: function() {
-    axios.get('https://api.github.com/users/JoeTakasuna/repos')
+    axios.get('https://api.github.com/users/JoeTakasuna/repos?sort=updated')
       .then(response => {
         this.githubData = response.data
       })
@@ -73,7 +78,17 @@ export default {
 </script>
 
 <style scoped>
+.container {
+  background-color: var(--light);
+}
 .card {
   margin: 6px;
+}
+.logo {
+  padding: 12px;
+  max-width: 120px;
+}
+.text {
+  font-size: x-small;
 }
 </style>
