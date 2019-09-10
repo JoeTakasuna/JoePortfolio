@@ -8,7 +8,7 @@
               v-img(src="@/assets/github.png")
             v-divider
             v-container(style="max-height: 356px; background-color: white;" class="overflow-y-auto")
-              v-list-item(v-for="data in githubData")
+              v-list-item(v-for="(data, index) in githubData" :key="index")
                 v-list-item-content
                   a(:href="data.svn_url" target="_blank")
                     v-list-item-title {{ data.name }}
