@@ -5,8 +5,7 @@
       .search-box
         v-select(label="技術で検索" :items="techs" multiple)
       .search-box
-        v-text-field(label="キーワード検索" prepend-inner-icon="search" v-model="keyword")
-    p {{ message }}
+        v-text-field(:loading="loading" label="キーワード検索" prepend-inner-icon="search" v-model="keyword")
     transition-group.card-area(name="flip")
         WorkCard(v-for="content in filteredContents" :key="content.id" :content="content" width="240px" height="240px")
 </template>
@@ -45,17 +44,17 @@ export default {
       filteredContents: null,
       techs: ['Vue.js', 'Python', 'GAS'],
       keyword: '',
-      message: '　'
+      loading: false
     }
   },
   methods: {
     getAnswer: function() {
       if (this.keyword === '') {
-        this.message = '　'
+        this.loading = false
         this.filteredContents = this.contents
         return
       }
-      this.message = '　'
+      this.loading = false
       this.filteredContents = this.contents.filter( content => {
         return content.title.indexOf(this.keyword) != -1
           || content.text.indexOf(this.keyword) != -1
@@ -68,7 +67,7 @@ export default {
   },
   watch: {
     keyword: function() {
-      this.message = 'Waiting for you to stop typing...'
+      this.loading = true
       this.debouncedGetAnswer()
     }
   }

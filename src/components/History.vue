@@ -5,10 +5,10 @@
       .search-box
         v-select(label="ジャンル検索" :items="genre" multiple)
       .search-box
-        v-text-field(label="キーワード検索" prepend-inner-icon="search" v-model="keyword")
-    p {{ message }}
+        v-text-field(:loading="loading" label="キーワード検索" prepend-inner-icon="search" v-model="keyword")
     v-timeline.timeline
-      TimelineCard(v-for="(content, index) in filteredContents" :content="content" :key="index")
+      transition-group.card-area(name="flip")
+        TimelineCard(v-for="(content, index) in filteredContents" :content="content" :key="index")
 </template>
 
 <script>
@@ -51,17 +51,17 @@ export default {
       filteredContents: null,
       genre: ['IT', '建築', '趣味'],
       keyword: '',
-      message: '　'
+      loading: false
     }
   },
   methods: {
     filtering: function() {
       if (this.keyword === '') {
-        this.message = '　'
+        this.loading = false
         this.filteredContents = this.contents
         return
       }
-      this.message = '　'
+      this.loading = false
       this.filteredContents = this.contents.filter( content => {
         return content.title.indexOf(this.keyword) != -1
           || content.text.indexOf(this.keyword) != -1
@@ -75,7 +75,7 @@ export default {
   },
   watch: {
     keyword: function() {
-      this.message = 'Waiting for you to stop typing...'
+      this.loading = true
       this.debouncedFiltering()
     }
   }
@@ -97,5 +97,14 @@ export default {
 }
 .timeline {
   width: 60vw;
+}
+.flip-move {
+  transition: opacity 500ms, transform 1s;
+}
+.flip-enter, .flip-leave-to {
+  opacity: 0;
+}
+.flip-leave-active {
+  position: absolute;
 }
 </style>
