@@ -54,5 +54,18 @@
   "browserslist": [
     "> 1%",
     "last 2 versions"
-  ]
+  ],
+  "description": "## Environment - Vue.js@3.11.0 - Vue CLI - Vue Router - Vuetify - Pug",
+  "main": "babel.config.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JoeTakasuna/JoePortfolio.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JoeTakasuna/JoePortfolio/issues"
+  },
+  "homepage": "https://github.com/JoeTakasuna/JoePortfolio#readme"
 }
