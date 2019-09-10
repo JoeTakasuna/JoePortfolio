@@ -20,7 +20,4 @@ export default {
 .card {
   margin: 12px;
 }
-/* .flip-list-move {
-  transition: transform 1s;
-} */
 </style>

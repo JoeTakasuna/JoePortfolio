@@ -6,8 +6,10 @@
         v-select(label="技術で検索" :items="techs" multiple)
       .search-box
         v-text-field(label="キーワード検索" prepend-inner-icon="search" v-model="keyword")
-    .card-area(v-for="content in filteredContents")
-      WorkCard(:content="content" width="240px" height="240px")
+    p {{ message }}
+    v-btn(@click="shuffle") Shuffle
+    transition-group.card-area(name="flip-list")
+        WorkCard(v-for="content in filteredContents" :key="content.id" :content="content" width="240px" height="240px")
 </template>
 
 <script>
@@ -23,16 +25,19 @@ export default {
     return {
       contents: [
         {
+          id: 1,
           title: '酒場',
           text: 'おさけがのめます',
           img: require('@/assets/works/1.jpg'),
         },
         {
+          id: 2,
           title: '遺跡',
           text: 'ひみつがあります',
           img: require('@/assets/works/2.jpg'),
         },
         {
+          id: 3,
           title: '火山',
           text: 'だいちをつくります',
           img: require('@/assets/works/3.jpg'),
@@ -41,13 +46,13 @@ export default {
       filteredContents: null,
       techs: ['Vue.js', 'Python', 'GAS'],
       keyword: '',
-      message: ''
+      message: '　'
     }
   },
   methods: {
     getAnswer: function() {
-      if (this.keyword === '') {
-        this.message = ''
+      if (this.keyword === '　') {
+        this.message = '　'
         this.filteredContents = this.contents
         return
       }
@@ -83,5 +88,8 @@ export default {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+}
+.flip-list-move {
+  transition: transform 1s;
 }
 </style>
