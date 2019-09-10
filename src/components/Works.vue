@@ -5,8 +5,8 @@
       .search-box
         v-select(label="技術で検索" :items="techs" multiple)
       .search-box
-        v-text-field(label="キーワード検索" prepend-inner-icon="search")
-    WorkCard(width="240px" height="240px")
+        v-text-field(label="キーワード検索" prepend-inner-icon="search" v-model="keyword")
+    WorkCard(width="240px" height="240px" :keyword="keyword")
 </template>
 
 <script>
@@ -19,7 +19,8 @@ export default {
   },
   data () {
     return {
-      techs: ['Vue.js', 'Python', 'GAS']
+      techs: ['Vue.js', 'Python', 'GAS'],
+      keyword: ''
     }
   }
 };
