@@ -63,10 +63,10 @@ export default {
       }
       this.message = '　'
       this.filteredContents = this.contents.filter( content => {
-          return content.title.indexOf(this.keyword) != -1
-            || content.text.indexOf(this.keyword) != -1
-            || content.date.indexOf(this.keyword) != -1
-        })
+        return content.title.indexOf(this.keyword) != -1
+          || content.text.indexOf(this.keyword) != -1
+          || content.date.indexOf(this.keyword) != -1
+      })
     }
   },
   created: function() {
