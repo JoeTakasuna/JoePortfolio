@@ -1,4 +1,4 @@
-# vue_template
+# joe_portfolio
 
 ## Environment
 - Vue.js@3.11.0
