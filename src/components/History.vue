@@ -55,13 +55,13 @@ export default {
     }
   },
   methods: {
-    getAnswer: function() {
+    filtering: function() {
       if (this.keyword === '') {
-        this.message = ''
+        this.message = '　'
         this.filteredContents = this.contents
         return
       }
-      this.message = ''
+      this.message = '　'
       this.filteredContents = this.contents.filter( content => {
           return content.title.indexOf(this.keyword) != -1
             || content.text.indexOf(this.keyword) != -1
@@ -71,12 +71,12 @@ export default {
   },
   created: function() {
     this.filteredContents = this.contents
-    this.debouncedGetAnswer = _.debounce(this.getAnswer, 1000)
+    this.debouncedFiltering = _.debounce(this.filtering, 1000)
   },
   watch: {
     keyword: function() {
       this.message = 'Waiting for you to stop typing...'
-      this.debouncedGetAnswer()
+      this.debouncedFiltering()
     }
   }
 };
