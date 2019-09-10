@@ -1,5 +1,5 @@
 <template>
-  <v-app>
+  <v-app id="app">
     <v-content>
       <router-view />
     </v-content>
@@ -31,3 +31,18 @@ export default {
   // }
 };
 </script>
+
+<style>
+:root {
+  --main: #86B81B;
+  --dark: #2E3819;
+  --light: #A1C358;
+  --accent: #8F1CB8;
+  --text: #000A02;
+  --back: #FCFAF2;
+}
+#app {
+  color: var(--text);
+  background-color: var(--back);
+}
+</style>
