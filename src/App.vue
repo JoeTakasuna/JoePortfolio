@@ -1,14 +1,20 @@
 <template>
   <v-app id="app">
     <v-content>
+      <HeaderMenu />
       <router-view />
     </v-content>
   </v-app>
 </template>
 
 <script>
+import HeaderMenu from './components/parts/HeaderMenu.vue'
+
 export default {
-  name: 'App'
+  name: 'App',
+  components: {
+    HeaderMenu
+  }
   // data () {
   //   return {
   //     データの置き場所

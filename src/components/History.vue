@@ -1,21 +1,16 @@
 <template lang="pug">
   .container
-    h1 {{ message }}
+    h1 経歴
 </template>
 
 <script>
 export default {
-  name: 'Welcome',
-  data () {
-    return {
-      message: 'Hello, Joe!'
-    }
-  }
+  name: 'History'
 };
 </script>
 
 <style scoped>
 .container {
-  text-align: center;
+  margin: 24px;
 }
 </style>
