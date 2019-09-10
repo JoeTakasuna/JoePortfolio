@@ -15,8 +15,6 @@
 ```
 git init
 git remote add origin xxx(url)
-git add .
-git commit -m "initial"
 git push origin master
 ```
 5. yarn serve
