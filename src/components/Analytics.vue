@@ -1,11 +1,17 @@
 <template lang="pug">
   .container
-    h1 自分のデータ
+    h1
+    PostDataList
 </template>
 
 <script>
+import PostDataList from './parts/PostDataList.vue'
+
 export default {
-  name: 'Analytics'
+  name: 'Analytics',
+  components: {
+    PostDataList
+  }
 };
 </script>
 
