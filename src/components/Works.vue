@@ -9,7 +9,7 @@
       .image-button-area
         ImageButton(v-for="(tech, index) in techs" :key="index" :image="tech.img")
     transition-group.card-area(name="flip")
-      CardOnGrid(v-for="content in filteredContents" :key="content.id" :content="content" width="240px" height="240px")
+      CardOnGrid(v-for="content in filteredContents" :key="content.id" :content="content" :techs="techs" width="240px" height="240px")
 </template>
 
 <script>
@@ -32,69 +32,75 @@ export default {
           title: '酒場',
           text: 'おさけがのめます',
           img: require('@/assets/works/1.jpg'),
+          techs: {python: 1, js: 1, ruby: 1, vue: 1, rails: 1, gas: 1, other: 1}
         },
         {
           id: 2,
           title: '遺跡',
           text: 'ひみつがあります',
           img: require('@/assets/works/2.jpg'),
+          techs: {python: 1, js: 0, ruby: 0, vue: 0, rails: 0, gas: 1, other: 1}
         },
         {
           id: 3,
           title: '火山',
           text: 'だいちをつくれます',
           img: require('@/assets/works/3.jpg'),
+          techs: {python: 0, js: 1, ruby: 0, vue: 1, rails: 0, gas: 0, other: 0}
         },
         {
           id: 4,
           title: '海',
           text: 'しょっぱいです',
           img: require('@/assets/works/4.jpg'),
+          techs: {python: 1, js: 0, ruby: 0, vue: 0, rails: 0, gas: 0, other: 0}
         },
         {
           id: 5,
           title: '工房',
           text: 'ぶきをつくれます',
           img: require('@/assets/works/5.jpg'),
+          techs: {python: 0, js: 0, ruby: 1, vue: 0, rails: 1, gas: 0, other: 0}
         },
         {
           id: 6,
           title: '村',
           text: 'ひとがいます',
           img: require('@/assets/works/6.jpg'),
+          techs: {python: 0, js: 0, ruby: 0, vue: 0, rails: 0, gas: 0, other: 1}
         }
       ],
       filteredContents: null,
-      techs: [
-        {
+      techs: {
+        python: {
           name: 'Python',
           img: require('@/assets/techs/python.png')
         },
-        {
+        js: {
           name: 'JavaScript',
           img: require('@/assets/techs/js.png')
         },
-        {
+        ruby: {
           name: 'Ruby',
           img: require('@/assets/techs/ruby.png')
         },
-        {
+        vue: {
           name: 'Vue.js',
           img: require('@/assets/techs/vue.png')
         },
-        {
+        rails: {
           name: 'Ruby on Rails',
           img: require('@/assets/techs/rails.png')
         },
-        {
+        gas: {
           name: 'GAS',
           img: require('@/assets/techs/gas.png')
         },
-        {
+        other: {
           name: 'other',
           img: require('@/assets/techs/other.png')
         }
-      ]
+      }
     }
   },
   methods: {
