@@ -1,5 +1,5 @@
 <template lang="pug">
-  v-btn.btn(@click="filtering" x-small depressed width="48px" height="48")
+  v-btn.btn(@click="filtering" x-small :depressed="!filtered" width="48px" height="48")
     v-img(:src="image" max-width="48px")
 </template>
 
@@ -10,9 +10,20 @@ export default {
     id: String,
     image: String
   },
+  data () {
+    return {
+      filtered: false
+    }
+  },
   methods: {
     filtering: function() {
-      this.$emit('filtering', this.id)
+      if (this.filtered) {
+        this.$emit('filtering', '')
+        this.filtered = false
+      } else {
+        this.$emit('filtering', this.id)
+        this.filtered = true
+      }
     }
   }
 };
