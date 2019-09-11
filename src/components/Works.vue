@@ -1,12 +1,13 @@
 <template lang="pug">
   .container
-    .image-button-area
-      ImageButton(v-for="tech in techs" :image="tech.img")
-    .search
-      .search-box
-        v-select(label="技術で検索" :items="techs" multiple)
-      .search-box
-        v-text-field(:loading="loading" label="キーワード検索" prepend-inner-icon="search" v-model="keyword")
+    .search-area
+      .search
+        .search-box
+          v-select(label="ソート" prepend-inner-icon="sort")
+        .search-box
+          v-text-field(:loading="loading" label="キーワード検索" prepend-inner-icon="search" v-model="keyword")
+      .image-button-area
+        ImageButton(v-for="tech in techs" :image="tech.img")
     transition-group.card-area(name="flip")
       WorkCard(v-for="content in filteredContents" :key="content.id" :content="content" width="240px" height="240px")
 </template>
@@ -125,6 +126,11 @@ export default {
 </script>
 
 <style scoped>
+.search-area {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
 .search {
   display: flex;
 }
