@@ -7,7 +7,7 @@
         .search-box
           SearchByKeyword(@filtering="filtering")
       .image-button-area
-        ImageButton(v-for="tech in techs" :image="tech.img")
+        ImageButton(v-for="(tech, index) in techs" :key="index" :image="tech.img")
     transition-group.card-area(name="flip")
       CardOnGrid(v-for="content in filteredContents" :key="content.id" :content="content" width="240px" height="240px")
 </template>
