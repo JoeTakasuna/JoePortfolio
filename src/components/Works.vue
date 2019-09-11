@@ -7,7 +7,13 @@
         .search-box
           SearchByKeyword(@filtering="keywordFiltering")
       .image-button-area
-        ImageButton(@filtering="techFiltering" v-for="(tech, index) in techs" :key="index" :id="index" :image="tech.img")
+        ImageButton(@filtering="techFiltering"
+                    v-for="(tech, index) in techs"
+                    :key="index"
+                    :id="index"
+                    :image="tech.img"
+                    :selectedOnFilter="selectedTechOnFilter==index"
+                    )
     transition-group.card-area(name="flip")
       CardOnGrid(v-for="content in filteredContents" :key="content.id" :content="content" :techs="techs" width="240px" height="240px")
 </template>
@@ -74,33 +80,41 @@ export default {
       techs: {
         python: {
           name: 'Python',
-          img: require('@/assets/techs/python.png')
+          img: require('@/assets/techs/python.png'),
+          selectedOnFilter: false
         },
         js: {
           name: 'JavaScript',
-          img: require('@/assets/techs/js.png')
+          img: require('@/assets/techs/js.png'),
+          selectedOnFilter: false
         },
         ruby: {
           name: 'Ruby',
-          img: require('@/assets/techs/ruby.png')
+          img: require('@/assets/techs/ruby.png'),
+          selectedOnFilter: false
         },
         vue: {
           name: 'Vue.js',
-          img: require('@/assets/techs/vue.png')
+          img: require('@/assets/techs/vue.png'),
+          selectedOnFilter: false
         },
         rails: {
           name: 'Ruby on Rails',
-          img: require('@/assets/techs/rails.png')
+          img: require('@/assets/techs/rails.png'),
+          selectedOnFilter: false
         },
         gas: {
           name: 'GAS',
-          img: require('@/assets/techs/gas.png')
+          img: require('@/assets/techs/gas.png'),
+          selectedOnFilter: false
         },
         other: {
           name: 'other',
-          img: require('@/assets/techs/other.png')
+          img: require('@/assets/techs/other.png'),
+          selectedOnFilter: false
         }
-      }
+      },
+      selectedTechOnFilter: ''
     }
   },
   methods: {
@@ -115,14 +129,16 @@ export default {
       })
     },
     techFiltering: function(tech) {
-      if (tech === '') {
+      if (this.selectedTechOnFilter == tech) {
         this.filteredContents = this.contents
-        return
-      }
-      else {
+        // this.techs[tech].selectedOnFilter = false
+        this.selectedTechOnFilter = ''
+      } else {
         this.filteredContents = this.contents.filter(content => {
           return content.techs[tech]
         })
+        // this.techs[tech].selectedOnFilter = true
+        this.selectedTechOnFilter = tech
       }
     }
   },

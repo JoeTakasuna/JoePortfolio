@@ -1,5 +1,11 @@
 <template lang="pug">
-  v-btn.btn(@click="filtering" x-small :depressed="!filtered" width="48px" height="48")
+  v-btn.btn(@click="filtering"
+            x-small
+            depressed
+            :outlined="selectedOnFilter"
+            width="48px"
+            height="48px"
+            )
     v-img(:src="image" max-width="48px")
 </template>
 
@@ -8,22 +14,12 @@ export default {
   name: 'ImageButton',
   props: {
     id: String,
-    image: String
-  },
-  data () {
-    return {
-      filtered: false
-    }
+    image: String,
+    selectedOnFilter: Boolean
   },
   methods: {
     filtering: function() {
-      if (this.filtered) {
-        this.$emit('filtering', '')
-        this.filtered = false
-      } else {
         this.$emit('filtering', this.id)
-        this.filtered = true
-      }
     }
   }
 };
