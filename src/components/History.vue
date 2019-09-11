@@ -4,19 +4,20 @@
       .search-box
         v-select(label="ジャンル検索" :items="genre" multiple)
       .search-box
-        v-text-field(:loading="loading" label="キーワード検索" prepend-inner-icon="search" v-model="keyword")
+        SearchByKeyword(@filtering="filtering")
     v-timeline.timeline
       transition-group.card-area(name="flip")
         CardOnTimeline(v-for="content in filteredContents" :key="content.id" :content="content")
 </template>
 
 <script>
-import _ from 'lodash'
+import SearchByKeyword from './parts/SearchByKeyword.vue'
 import CardOnTimeline from './parts/CardOnTimeline.vue'
 
 export default {
   name: 'History',
   components: {
+    SearchByKeyword,
     CardOnTimeline
   },
   data () {
@@ -52,35 +53,24 @@ export default {
         }
       ],
       filteredContents: null,
-      genre: ['IT', '建築', '趣味'],
-      keyword: '',
-      loading: false
+      genre: ['IT', '建築', '趣味']
     }
   },
   methods: {
-    filtering: function() {
-      if (this.keyword === '') {
-        this.loading = false
+    filtering: function(keyword) {
+      if (keyword === '') {
         this.filteredContents = this.contents
         return
       }
-      this.loading = false
-      this.filteredContents = this.contents.filter( content => {
-        return content.title.indexOf(this.keyword) != -1
-          || content.text.indexOf(this.keyword) != -1
+      this.filteredContents = this.contents.filter(content => {
+        return content.title.indexOf(keyword) != -1
+          || content.text.indexOf(keyword) != -1
           || content.date.indexOf(this.keyword) != -1
       })
     }
   },
   created: function() {
     this.filteredContents = this.contents
-    this.debouncedFiltering = _.debounce(this.filtering, 1000)
-  },
-  watch: {
-    keyword: function() {
-      this.loading = true
-      this.debouncedFiltering()
-    }
   }
 };
 </script>
