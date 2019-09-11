@@ -9,19 +9,19 @@
       .image-button-area
         ImageButton(v-for="tech in techs" :image="tech.img")
     transition-group.card-area(name="flip")
-      WorkCard(v-for="content in filteredContents" :key="content.id" :content="content" width="240px" height="240px")
+      CardOnGrid(v-for="content in filteredContents" :key="content.id" :content="content" width="240px" height="240px")
 </template>
 
 <script>
 import _ from 'lodash'
 import ImageButton from './parts/ImageButton.vue'
-import WorkCard from './parts/WorkCard.vue'
+import CardOnGrid from './parts/CardOnGrid.vue'
 
 export default {
   name: 'Works',
   components: {
     ImageButton,
-    WorkCard
+    CardOnGrid
   },
   data () {
     return {

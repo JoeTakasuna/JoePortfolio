@@ -9,7 +9,7 @@
 
 <script>
 export default {
-  name: 'TimelineCard',
+  name: 'CardOnTimeline',
   props: {
     content: Object
   }

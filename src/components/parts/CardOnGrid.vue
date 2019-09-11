@@ -7,7 +7,7 @@
 
 <script>
 export default {
-  name: 'WorkCard',
+  name: 'CardOnGrid',
   props: {
     content: Object,
     width: String,

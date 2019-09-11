@@ -7,17 +7,17 @@
         v-text-field(:loading="loading" label="キーワード検索" prepend-inner-icon="search" v-model="keyword")
     v-timeline.timeline
       transition-group.card-area(name="flip")
-        TimelineCard(v-for="content in filteredContents" :key="content.id" :content="content")
+        CardOnTimeline(v-for="content in filteredContents" :key="content.id" :content="content")
 </template>
 
 <script>
 import _ from 'lodash'
-import TimelineCard from './parts/TimelineCard.vue'
+import CardOnTimeline from './parts/CardOnTimeline.vue'
 
 export default {
   name: 'History',
   components: {
-    TimelineCard
+    CardOnTimeline
   },
   data () {
     return {
