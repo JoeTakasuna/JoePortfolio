@@ -1,6 +1,5 @@
 <template lang="pug">
   .container
-    h1 技術と作品
     .search
       .search-box
         v-select(label="技術で検索" :items="techs" multiple)

@@ -1,6 +1,5 @@
 <template lang="pug">
   .container
-    h1 経歴
     .search
       .search-box
         v-select(label="ジャンル検索" :items="genre" multiple)
