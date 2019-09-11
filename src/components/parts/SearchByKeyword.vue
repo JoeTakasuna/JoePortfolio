@@ -1,10 +1,33 @@
 <template lang="pug">
-  .container
+  v-text-field(:loading="loading" label="キーワード検索" prepend-inner-icon="search" v-model="keyword")
 </template>
 
 <script>
+import _ from 'lodash'
+
 export default {
-  name: 'SearchByKeyword'
+  name: 'SearchByKeyword',
+  data () {
+    return {
+      keyword: '',
+      loading: false
+    }
+  },
+  methods: {
+    filtering: function() {
+      this.$emit('filtering', this.keyword)
+      this.loading = false
+    }
+  },
+  created: function() {
+    this.debouncedFiltering = _.debounce(this.filtering, 1000)
+  },
+  watch: {
+    keyword: function() {
+      this.loading = true
+      this.debouncedFiltering()
+    }
+  }
 };
 </script>
 

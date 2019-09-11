@@ -5,7 +5,7 @@
         .search-box
           v-select(label="ソート" prepend-inner-icon="sort")
         .search-box
-          v-text-field(:loading="loading" label="キーワード検索" prepend-inner-icon="search" v-model="keyword")
+          SearchByKeyword(@filtering="filtering")
       .image-button-area
         ImageButton(v-for="tech in techs" :image="tech.img")
     transition-group.card-area(name="flip")
@@ -13,13 +13,14 @@
 </template>
 
 <script>
-import _ from 'lodash'
+import SearchByKeyword from './parts/SearchByKeyword.vue'
 import ImageButton from './parts/ImageButton.vue'
 import CardOnGrid from './parts/CardOnGrid.vue'
 
 export default {
   name: 'Works',
   components: {
+    SearchByKeyword,
     ImageButton,
     CardOnGrid
   },
@@ -93,34 +94,23 @@ export default {
           name: 'other',
           img: require('@/assets/techs/other.png')
         }
-      ],
-      keyword: '',
-      loading: false
+      ]
     }
   },
   methods: {
-    getAnswer: function() {
-      if (this.keyword === '') {
-        this.loading = false
+    filtering: function(keyword) {
+      if (keyword === '') {
         this.filteredContents = this.contents
         return
       }
-      this.loading = false
-      this.filteredContents = this.contents.filter( content => {
-        return content.title.indexOf(this.keyword) != -1
-          || content.text.indexOf(this.keyword) != -1
+      this.filteredContents = this.contents.filter(content => {
+        return content.title.indexOf(keyword) != -1
+          || content.text.indexOf(keyword) != -1
       })
     }
   },
   created: function() {
     this.filteredContents = this.contents
-    this.debouncedGetAnswer = _.debounce(this.getAnswer, 1000)
-  },
-  watch: {
-    keyword: function() {
-      this.loading = true
-      this.debouncedGetAnswer()
-    }
   }
 };
 </script>
