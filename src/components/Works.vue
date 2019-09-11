@@ -36,8 +36,26 @@ export default {
         {
           id: 3,
           title: '火山',
-          text: 'だいちをつくります',
+          text: 'だいちをつくれます',
           img: require('@/assets/works/3.jpg'),
+        },
+        {
+          id: 4,
+          title: '海',
+          text: 'しょっぱいです',
+          img: require('@/assets/works/4.jpg'),
+        },
+        {
+          id: 5,
+          title: '工房',
+          text: 'ぶきをつくれます',
+          img: require('@/assets/works/5.jpg'),
+        },
+        {
+          id: 6,
+          title: '村',
+          text: 'ひとがいます',
+          img: require('@/assets/works/6.jpg'),
         }
       ],
       filteredContents: null,
