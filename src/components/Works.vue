@@ -5,9 +5,9 @@
         .search-box
           v-select(label="ソート" prepend-inner-icon="sort")
         .search-box
-          SearchByKeyword(@filtering="filtering")
+          SearchByKeyword(@filtering="keywordFiltering")
       .image-button-area
-        ImageButton(v-for="(tech, index) in techs" :key="index" :image="tech.img")
+        ImageButton(@filtering="techFiltering" v-for="(tech, index) in techs" :key="index" :id="index" :image="tech.img")
     transition-group.card-area(name="flip")
       CardOnGrid(v-for="content in filteredContents" :key="content.id" :content="content" :techs="techs" width="240px" height="240px")
 </template>
@@ -104,7 +104,7 @@ export default {
     }
   },
   methods: {
-    filtering: function(keyword) {
+    keywordFiltering: function(keyword) {
       if (keyword === '') {
         this.filteredContents = this.contents
         return
@@ -113,6 +113,17 @@ export default {
         return content.title.indexOf(keyword) != -1
           || content.text.indexOf(keyword) != -1
       })
+    },
+    techFiltering: function(tech) {
+      if (tech === '') {
+        this.filteredContents = this.contents
+        return
+      }
+      else {
+        this.filteredContents = this.contents.filter(content => {
+          return content.techs[tech]
+        })
+      }
     }
   },
   created: function() {
