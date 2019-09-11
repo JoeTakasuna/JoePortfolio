@@ -3,13 +3,13 @@
     router-link.link(to="/")
       v-btn.btn(small outlined) home
     router-link.link(to="/history")
-      v-btn(small outlined) history
+      v-btn.btn(small outlined) history
     router-link.link(to="/works")
-      v-btn(small outlined) works
+      v-btn.btn(small outlined) works
     router-link.link(to="/analytics")
-      v-btn(small outlined) analytics
+      v-btn.btn(small outlined) analytics
     router-link.link(to="/future")
-      v-btn(small outlined) future
+      v-btn.btn(small outlined) future
 </template>
 
 <script>
@@ -24,7 +24,7 @@ export default {
   text-align: center;
 }
 .btn {
-  background-color: var(--main);
+  background-color: var(--light);
 }
 .link {
   margin: 12px;
