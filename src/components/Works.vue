@@ -1,5 +1,7 @@
 <template lang="pug">
   .container
+    .image-button-area
+      ImageButton(v-for="tech in techs" :image="tech.img")
     .search
       .search-box
         v-select(label="技術で検索" :items="techs" multiple)
@@ -11,11 +13,13 @@
 
 <script>
 import _ from 'lodash'
+import ImageButton from './parts/ImageButton.vue'
 import WorkCard from './parts/WorkCard.vue'
 
 export default {
   name: 'Works',
   components: {
+    ImageButton,
     WorkCard
   },
   data () {
@@ -59,7 +63,36 @@ export default {
         }
       ],
       filteredContents: null,
-      techs: ['Vue.js', 'Python', 'GAS'],
+      techs: [
+        {
+          name: 'Python',
+          img: require('@/assets/techs/python.png')
+        },
+        {
+          name: 'JavaScript',
+          img: require('@/assets/techs/js.png')
+        },
+        {
+          name: 'Ruby',
+          img: require('@/assets/techs/ruby.png')
+        },
+        {
+          name: 'Vue.js',
+          img: require('@/assets/techs/vue.png')
+        },
+        {
+          name: 'Ruby on Rails',
+          img: require('@/assets/techs/rails.png')
+        },
+        {
+          name: 'GAS',
+          img: require('@/assets/techs/gas.png')
+        },
+        {
+          name: 'other',
+          img: require('@/assets/techs/other.png')
+        }
+      ],
       keyword: '',
       loading: false
     }
