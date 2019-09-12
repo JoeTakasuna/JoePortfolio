@@ -17,7 +17,6 @@ export default {
   name: 'HeaderMenu',
   methods: {
     reload: function() {
-      location.reload()
     }
   }
 };

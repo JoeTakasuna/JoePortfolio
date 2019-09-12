@@ -73,6 +73,10 @@ export default {
   },
   updated: function() {
     this.reflectScript()
+  },
+  destroyed () {
+    document.getElementById('qiita-wjs').remove()
+    document.getElementById('twitter-wjs').remove()
   }
 }
 </script>
