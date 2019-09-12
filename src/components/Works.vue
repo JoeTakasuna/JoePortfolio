@@ -56,7 +56,7 @@ export default {
         {
           id: 3,
           title: 'Easy Job Hunt',
-          text: '就活支援サイト',
+          text: '就活の情報管理支援サイト',
           img: require('@/assets/works/easyjobhunt.png'),
           techs: {python: 0, js: 0, ruby: 1, vue: 0, rails: 1, gas: 0, other: 0}
         },
@@ -141,12 +141,11 @@ export default {
     keywordFiltering: function(keyword) {
       if (keyword === '') {
         this.filteredContents = this.contents
-        return
+      } else {
+        this.filteredContents = this.contents.filter(content => {
+          return content.title.indexOf(keyword) != -1 || content.text.indexOf(keyword) != -1
+        })
       }
-      this.filteredContents = this.contents.filter(content => {
-        return content.title.indexOf(keyword) != -1
-          || content.text.indexOf(keyword) != -1
-      })
     },
     techFiltering: function(tech) {
       if (this.selectedTechOnFilter == tech) {
