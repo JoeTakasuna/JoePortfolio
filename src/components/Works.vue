@@ -19,7 +19,7 @@
                  :key="content.id"
                  :content="content"
                  :techs="techs"
-                 width="280px"
+                 width="240px"
                  height="280px")
 </template>
 
@@ -37,11 +37,12 @@ export default {
   },
   data () {
     return {
+      // imgの基本サイズは2880*1800
       contents: [
         {
           id: 1,
           title: '息抜きの折り紙',
-          text: '中学生の頃に作った作品公開サイト',
+          text: '中学生の頃に作った作品サイト',
           img: require('@/assets/works/ikinuki.png'),
           techs: {python: 0, js: 0, ruby: 0, vue: 0, rails: 0, gas: 0, other: 1}
         },
@@ -49,7 +50,7 @@ export default {
           id: 2,
           title: '2019年を目指せ!!',
           text: '亥年正月企画ゲーム',
-          img: require('@/assets/works/newyear2019.png'),
+          img: require('@/assets/works/2019.png'),
           techs: {python: 0, js: 1, ruby: 0, vue: 0, rails: 0, gas: 0, other: 0}
         },
         {
@@ -76,21 +77,21 @@ export default {
         {
           id: 6,
           title: '小松ブロックス',
-          text: '小松研で開発する名作ボードゲーム',
+          text: '名作ボードゲーム「Blokus」',
           img: require('@/assets/works/komatsuBlokus.gif'),
           techs: {python: 1, js: 0, ruby: 0, vue: 0, rails: 0, gas: 0, other: 0}
         },
         {
           id: 7,
           title: 'Graffiti Online',
-          text: '世界中のWebサイトにグラフィティを',
+          text: '世界のWeb上にグラフィティを',
           img: require('@/assets/works/graffitiOnline.png'),
           techs: {python: 0, js: 1, ruby: 1, vue: 1, rails: 1, gas: 0, other: 0}
         },
         {
           id: 8,
           title: 'Real Tweet',
-          text: '日常のひとりごとで自動ツイート',
+          text: 'ひとりごとで自動ツイート',
           img: require('@/assets/works/realTweet.png'),
           techs: {python: 0, js: 0, ruby: 1, vue: 0, rails: 1, gas: 0, other: 1}
         },
