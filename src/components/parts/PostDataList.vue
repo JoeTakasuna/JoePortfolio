@@ -3,16 +3,7 @@
     v-container.container
       v-layout(wrap)
         v-flex(xs12 sm6 md3)
-          v-card.card
-            .logo
-              v-img(src="@/assets/github.png")
-            v-divider
-            v-container(style="max-height: 356px; background-color: white;" class="overflow-y-auto")
-              v-list-item(v-for="(data, index) in githubData" :key="index")
-                v-list-item-content
-                  a(:href="data.svn_url" target="_blank")
-                    v-list-item-title {{ data.name }}
-                  v-list-item-subtitle.text {{ data.description }}
+          PostDataCard.card
         v-flex(xs12 sm6 md3)
           v-card.card
             a(class="qiita" href="https://qiita.com/jonpili" data-qiita-widget data-username="jonpili" data-hide-footer) Qiita投稿
@@ -26,14 +17,12 @@
 
 <script>
 import axios from 'axios'
+import PostDataCard from './PostDataCard.vue'
 
 export default {
   name: 'PostDataList',
-  data () {
-    return {
-      items: null,
-      githubData: null
-    }
+  components: {
+    PostDataCard
   },
   methods: {
     reflectScript: function() {
@@ -48,7 +37,6 @@ export default {
           fjs.parentNode.insertBefore(js, fjs)
         })(document, 'script', 'qiita-wjs')
       }
-
       if (!document.getElementById('twitter-wjs')) {
         (function(d, s, id) {
           var js,
@@ -67,11 +55,6 @@ export default {
       .then(response => {
         this.githubData = response.data
       })
-  },
-  mounted: function() {
-    this.reflectScript()
-  },
-  updated: function() {
     this.reflectScript()
   },
   destroyed () {
@@ -87,12 +70,5 @@ export default {
 }
 .card {
   margin: 6px;
-}
-.logo {
-  padding: 12px;
-  max-width: 120px;
-}
-.text {
-  font-size: x-small;
 }
 </style>

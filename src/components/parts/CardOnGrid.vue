@@ -1,6 +1,6 @@
 <template lang="pug">
   v-card.card(:content="content" :width="width" :height="height")
-    v-img(:src="content.img" height="150px")
+    v-img(:src="content.img" aspect-ratio="1.6" contain)
     v-card-title {{ content.title }}
     v-card-text.text {{ content.text }}
     .techs-area

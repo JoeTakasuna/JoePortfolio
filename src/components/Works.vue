@@ -3,7 +3,7 @@
     .search-area
       .search
         .search-box
-          v-select(label="ソート" prepend-inner-icon="sort")
+          v-select(label="ソート" items="ソート機能準備中" prepend-inner-icon="sort")
         .search-box
           SearchByKeyword(@filtering="keywordFiltering")
       .image-button-area
@@ -37,7 +37,7 @@ export default {
   },
   data () {
     return {
-      // imgの基本サイズは2880*1800
+      // imgの基本サイズは2880*1800（フルスクリーン）
       contents: [
         {
           id: 1,
@@ -62,41 +62,34 @@ export default {
         },
         {
           id: 4,
-          title: 'Biscuet',
-          text: '営業活動を最適化しよう',
-          img: require('@/assets/works/biscuet.png'),
-          techs: {python: 0, js: 1, ruby: 1, vue: 1, rails: 1, gas: 0, other: 0}
-        },
-        {
-          id: 5,
           title: 'お茶たろう',
           text: 'SlackとRECEPTIONISTと繋ぐbot',
-          img: require('@/assets/works/easyjobhunt.png'),
+          img: require('@/assets/works/ochataro.png'),
           techs: {python: 0, js: 0, ruby: 0, vue: 0, rails: 0, gas: 1, other: 0}
         },
         {
-          id: 6,
+          id: 5,
           title: '小松ブロックス',
           text: '名作ボードゲーム「Blokus」',
           img: require('@/assets/works/komatsuBlokus.gif'),
           techs: {python: 1, js: 0, ruby: 0, vue: 0, rails: 0, gas: 0, other: 0}
         },
         {
-          id: 7,
+          id: 6,
           title: 'Graffiti Online',
           text: '世界のWeb上にグラフィティを',
           img: require('@/assets/works/graffitiOnline.png'),
           techs: {python: 0, js: 1, ruby: 1, vue: 1, rails: 1, gas: 0, other: 0}
         },
         {
-          id: 8,
+          id: 7,
           title: 'Real Tweet',
           text: 'ひとりごとで自動ツイート',
           img: require('@/assets/works/realTweet.png'),
           techs: {python: 0, js: 0, ruby: 1, vue: 0, rails: 1, gas: 0, other: 1}
         },
         {
-          id: 9,
+          id: 8,
           title: 'Kanafan',
           text: '役者である友人のファンサイト',
           img: require('@/assets/works/kanafan.png'),
