@@ -50,6 +50,6 @@ export default {
 #app {
   color: var(--text);
   background-color: var(--back);
-  padding: 0 10vw;
+  padding: 0 5vw;
 }
 </style>

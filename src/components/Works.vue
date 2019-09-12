@@ -15,7 +15,12 @@
                     :selectedOnFilter="selectedTechOnFilter==index"
                     )
     transition-group.card-area(name="flip")
-      CardOnGrid(v-for="content in filteredContents" :key="content.id" :content="content" :techs="techs" width="240px" height="240px")
+      CardOnGrid(v-for="content in filteredContents"
+                 :key="content.id"
+                 :content="content"
+                 :techs="techs"
+                 width="280px"
+                 height="280px")
 </template>
 
 <script>
@@ -35,45 +40,66 @@ export default {
       contents: [
         {
           id: 1,
-          title: '酒場',
-          text: 'おさけがのめます',
-          img: require('@/assets/works/1.jpg'),
-          techs: {python: 1, js: 1, ruby: 1, vue: 1, rails: 1, gas: 1, other: 1}
+          title: '息抜きの折り紙',
+          text: '中学生の頃に作った作品公開サイト',
+          img: require('@/assets/works/ikinuki.png'),
+          techs: {python: 0, js: 0, ruby: 0, vue: 0, rails: 0, gas: 0, other: 1}
         },
         {
           id: 2,
-          title: '遺跡',
-          text: 'ひみつがあります',
-          img: require('@/assets/works/2.jpg'),
-          techs: {python: 1, js: 0, ruby: 0, vue: 0, rails: 0, gas: 1, other: 1}
+          title: '2019年を目指せ!!',
+          text: '亥年正月企画ゲーム',
+          img: require('@/assets/works/newyear2019.png'),
+          techs: {python: 0, js: 1, ruby: 0, vue: 0, rails: 0, gas: 0, other: 0}
         },
         {
           id: 3,
-          title: '火山',
-          text: 'だいちをつくれます',
-          img: require('@/assets/works/3.jpg'),
-          techs: {python: 0, js: 1, ruby: 0, vue: 1, rails: 0, gas: 0, other: 0}
-        },
-        {
-          id: 4,
-          title: '海',
-          text: 'しょっぱいです',
-          img: require('@/assets/works/4.jpg'),
-          techs: {python: 1, js: 0, ruby: 0, vue: 0, rails: 0, gas: 0, other: 0}
-        },
-        {
-          id: 5,
-          title: '工房',
-          text: 'ぶきをつくれます',
-          img: require('@/assets/works/5.jpg'),
+          title: 'Easy Job Hunt',
+          text: '就活支援サイト',
+          img: require('@/assets/works/easyjobhunt.png'),
           techs: {python: 0, js: 0, ruby: 1, vue: 0, rails: 1, gas: 0, other: 0}
         },
         {
+          id: 4,
+          title: 'Biscuet',
+          text: '営業活動を最適化しよう',
+          img: require('@/assets/works/biscuet.png'),
+          techs: {python: 0, js: 1, ruby: 1, vue: 1, rails: 1, gas: 0, other: 0}
+        },
+        {
+          id: 5,
+          title: 'お茶たろう',
+          text: 'SlackとRECEPTIONISTと繋ぐbot',
+          img: require('@/assets/works/easyjobhunt.png'),
+          techs: {python: 0, js: 0, ruby: 0, vue: 0, rails: 0, gas: 1, other: 0}
+        },
+        {
           id: 6,
-          title: '村',
-          text: 'ひとがいます',
-          img: require('@/assets/works/6.jpg'),
-          techs: {python: 0, js: 0, ruby: 0, vue: 0, rails: 0, gas: 0, other: 1}
+          title: '小松ブロックス',
+          text: '小松研で開発する名作ボードゲーム',
+          img: require('@/assets/works/komatsuBlokus.gif'),
+          techs: {python: 1, js: 0, ruby: 0, vue: 0, rails: 0, gas: 0, other: 0}
+        },
+        {
+          id: 7,
+          title: 'Graffiti Online',
+          text: '世界中のWebサイトにグラフィティを',
+          img: require('@/assets/works/graffitiOnline.png'),
+          techs: {python: 0, js: 1, ruby: 1, vue: 1, rails: 1, gas: 0, other: 0}
+        },
+        {
+          id: 8,
+          title: 'Real Tweet',
+          text: '日常のひとりごとで自動ツイート',
+          img: require('@/assets/works/realTweet.png'),
+          techs: {python: 0, js: 0, ruby: 1, vue: 0, rails: 1, gas: 0, other: 1}
+        },
+        {
+          id: 9,
+          title: 'Kanafan',
+          text: '役者である友人のファンサイト',
+          img: require('@/assets/works/kanafan.png'),
+          techs: {python: 0, js: 1, ruby: 0, vue: 1, rails: 0, gas: 0, other: 0}
         }
       ],
       filteredContents: null,
