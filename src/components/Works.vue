@@ -131,13 +131,11 @@ export default {
     techFiltering: function(tech) {
       if (this.selectedTechOnFilter == tech) {
         this.filteredContents = this.contents
-        // this.techs[tech].selectedOnFilter = false
         this.selectedTechOnFilter = ''
       } else {
         this.filteredContents = this.contents.filter(content => {
           return content.techs[tech]
         })
-        // this.techs[tech].selectedOnFilter = true
         this.selectedTechOnFilter = tech
       }
     }
