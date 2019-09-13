@@ -3,10 +3,10 @@
             x-small
             depressed
             :outlined="selectedOnFilter"
-            width="48px"
-            height="48px"
+            width="48"
+            height="48"
             )
-    v-img(:src="image" max-width="48px")
+    v-img(:src="image" max-width="48")
 </template>
 
 <script>

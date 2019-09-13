@@ -3,7 +3,7 @@
     .search-area
       .search
         .search-box
-          v-select(label="ソート" items="ソート機能準備中" prepend-inner-icon="sort")
+          v-select(label="ソート" :items="sortItems" prepend-inner-icon="sort")
         .search-box
           SearchByKeyword(@filtering="keywordFiltering")
       .image-button-area
@@ -19,8 +19,8 @@
                  :key="content.id"
                  :content="content"
                  :techs="techs"
-                 width="240px"
-                 height="280px")
+                 width="240"
+                 height="280")
 </template>
 
 <script>
@@ -94,9 +94,16 @@ export default {
           text: '役者である友人のファンサイト',
           img: require('@/assets/works/kanafan.png'),
           techs: {python: 0, js: 1, ruby: 0, vue: 1, rails: 0, gas: 0, other: 0}
+        },
+        {
+          id: 9,
+          title: '営業支援システム',
+          text: 'インサイドセールスに特化',
+          techs: {python: 0, js: 1, ruby: 1, vue: 1, rails: 1, gas: 0, other: 0}
         }
       ],
       filteredContents: null,
+      sortItems: ['ソート機能準備中'],
       techs: {
         python: {
           name: 'Python',
