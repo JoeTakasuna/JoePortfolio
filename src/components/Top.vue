@@ -1,9 +1,6 @@
 <template lang="pug">
-  .container
-    v-dialog
-      template(v-slot:activator="{ on }")
-        v-btn(v-on="on")
-      v-card わーい
+  v-container.container
+    v-card.card aa
 </template>
 
 <script>
@@ -13,5 +10,11 @@ export default {
 </script>
 
 <style scoped>
-
+.container {
+  height: 120px;
+  overflow-y: auto;
+}
+.card {
+  height: 240px;
+}
 </style>

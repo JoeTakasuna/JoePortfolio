@@ -3,7 +3,7 @@
     .logo
       v-img(src="@/assets/github.png")
     v-divider
-    v-container(style="max-height: 356; background-color: white;" class="overflow-y-auto")
+    .container
       v-list-item(v-for="(data, index) in githubData" :key="index")
         v-list-item-content
           a(:href="data.svn_url" target="_blank")
@@ -34,6 +34,11 @@ export default {
 .logo {
   padding: 12px;
   max-width: 120px;
+}
+.container {
+  max-height: 356px;
+  background-color: white;
+  overflow-y: scroll;
 }
 .text {
   font-size: x-small;
