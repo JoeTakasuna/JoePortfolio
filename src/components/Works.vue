@@ -166,7 +166,7 @@ export default {
       }
     }
   },
-  created: function() {
+  mounted: function() {
     this.filteredContents = this.contents
   }
 };

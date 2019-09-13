@@ -2,8 +2,9 @@
   v-card.card(:content="content" :width="width" :height="height")
     v-img(v-if="content.img" :src="content.img" aspect-ratio="1.6" contain)
     v-card(v-else :width="width" :height="imgHeight" flat)
-      .icon-wrapper
-        v-icon.icon lock
+      .secret-area
+        v-icon lock
+        span.secret-text 非公開
     v-card-title {{ content.title }}
     v-card-text {{ content.text }}
     .techs-area
@@ -27,7 +28,7 @@ export default {
   },
   computed: {
     imgHeight: function() {
-      return this.height / 2
+      return this.width / 1.6
     }
   }
 };
@@ -37,10 +38,14 @@ export default {
 .card {
   margin: 12px;
 }
-.icon-wrapper {
+.secret-area {
   display: flex;
   justify-content: center;
   padding: 72px;
+}
+.secret-text {
+  margin-left: 6px;
+  color: grey;
 }
 .techs-area {
   display: flex;

@@ -21,7 +21,7 @@ export default {
       githubData: null
     }
   },
-  created: function() {
+  mounted: function() {
     axios.get('https://api.github.com/users/jonpili/repos?sort=updated')
       .then(response => {
         this.githubData = response.data

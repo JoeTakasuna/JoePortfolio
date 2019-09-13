@@ -16,7 +16,6 @@
 </template>
 
 <script>
-import axios from 'axios'
 import PostDataCard from './PostDataCard.vue'
 
 export default {
@@ -50,7 +49,7 @@ export default {
       }
     }
   },
-  created: function() {
+  mounted: function() {
     this.reflectScript()
   },
   destroyed () {

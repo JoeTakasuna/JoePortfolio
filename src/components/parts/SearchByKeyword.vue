@@ -19,7 +19,7 @@ export default {
       this.loading = false
     }
   },
-  created: function() {
+  mounted: function() {
     this.debouncedFiltering = _.debounce(this.filtering, 1000)
   },
   watch: {
