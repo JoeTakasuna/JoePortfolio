@@ -22,7 +22,7 @@ export default {
     }
   },
   created: function() {
-    axios.get('https://api.github.com/users/JoeTakasuna/repos?sort=updated')
+    axios.get('https://api.github.com/users/jonpili/repos?sort=updated')
       .then(response => {
         this.githubData = response.data
       })

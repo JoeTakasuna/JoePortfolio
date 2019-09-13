@@ -51,10 +51,6 @@ export default {
     }
   },
   created: function() {
-    axios.get('https://api.github.com/users/JoeTakasuna/repos?sort=updated')
-      .then(response => {
-        this.githubData = response.data
-      })
     this.reflectScript()
   },
   destroyed () {
