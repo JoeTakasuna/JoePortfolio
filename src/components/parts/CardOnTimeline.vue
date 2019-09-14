@@ -1,9 +1,9 @@
 <template lang="pug">
-  v-timeline-item(small :color="content.color")
+  v-timeline-item(small :color="cardColor")
     template(v-slot:opposite)
-      span(:class="`${content.color}--text`") {{ content.date }}
+      span(:class="`${cardColor}--text`") {{ content.date }}
     v-card
-      v-card-title(:class="`${content.color}--text`") {{ content.title }}
+      v-card-title(:class="`${cardColor}--text`") {{ content.title }}
       v-card-text {{ content.text }}
 </template>
 
@@ -12,6 +12,21 @@ export default {
   name: 'CardOnTimeline',
   props: {
     content: Object
+  },
+  data () {
+    return {
+      genreColor: {
+        main: 'green',
+        it: 'blue',
+        arch: 'red',
+        hobby: 'black'
+      }
+    }
+  },
+  computed: {
+    cardColor: function() {
+      return this.genreColor[this.content.genre]
+    }
   }
 };
 </script>

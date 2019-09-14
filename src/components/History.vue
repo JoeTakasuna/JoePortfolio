@@ -4,7 +4,7 @@
       .search-box
         v-select(label="ジャンル検索" :items="genre" multiple)
       .search-box
-        SearchByKeyword(@filtering="filtering")
+        SearchByKeyword(@filtering="keywordFiltering")
     v-timeline.timeline
       transition-group.card-area(name="card")
         CardOnTimeline(v-for="content in filteredContents"
@@ -24,42 +24,42 @@ export default {
   },
   data () {
     return {
+      genre: ['main', 'it', 'arch', 'hobby'],
       contents: [
         {
           id: 1,
           title: 'サイト作成',
           text: 'a',
           date: '2019',
-          color: 'red'
+          genre: 'it'
         },
         {
           id: 2,
           title: '大学入学',
           text: 'ab',
           date: '2013',
-          color: 'green'
+          genre: 'arch'
         },
         {
           id: 3,
           title: 'エレクトーンを始める',
           text: 'bc',
           date: '1999',
-          color: 'blue'
+          genre: 'hobby'
         },
         {
           id: 4,
           title: '誕生',
           text: 'abc',
           date: '1994',
-          color: 'red'
+          genre: 'main'
         }
       ],
-      filteredContents: null,
-      genre: ['IT', '建築', '趣味']
+      filteredContents: null
     }
   },
   methods: {
-    filtering: function(keyword) {
+    keywordFiltering: function(keyword) {
       if (keyword === '') {
         this.filteredContents = this.contents
         return
