@@ -183,6 +183,9 @@ export default {
   width: 216px;
   margin: 12px;
 }
+.search-button-area {
+  margin-bottom: 24px;
+}
 .card-area {
   display: flex;
   flex-direction: row;
