@@ -106,6 +106,11 @@ export default {
       filteredContents: null,
       sortItems: [],
       techs: {
+        all: {
+          name: 'All',
+          img: require('@/assets/techs/all.png'),
+          selectedOnFilter: false
+        },
         python: {
           name: 'Python',
           img: require('@/assets/techs/python.png'),
@@ -137,7 +142,7 @@ export default {
           selectedOnFilter: false
         },
         other: {
-          name: 'other',
+          name: 'OTHER',
           img: require('@/assets/techs/other.png'),
           selectedOnFilter: false
         }
@@ -156,7 +161,7 @@ export default {
       }
     },
     techFiltering: function(tech) {
-      if (this.selectedTechOnFilter == tech) {
+      if (tech === 'all' || tech === this.selectedTechOnFilter) {
         this.filteredContents = this.contents
         this.selectedTechOnFilter = null
       } else {
