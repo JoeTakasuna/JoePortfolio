@@ -83,7 +83,7 @@ export default {
   },
   methods: {
     keywordFiltering: function(keyword) {
-      if (keyword === '') {
+      if (keyword === null) {
         this.filteredContents = this.contents
         return
       }
@@ -122,7 +122,7 @@ export default {
   display: flex;
 }
 .search-box {
-  max-width: 30vw;
+  width: 180px;
   margin: 12px;
 }
 .timeline {

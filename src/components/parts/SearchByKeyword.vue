@@ -1,5 +1,9 @@
 <template lang="pug">
-  v-text-field(:loading="loading" label="キーワード検索" prepend-inner-icon="search" v-model="keyword")
+  v-text-field(:loading="loading"
+               label="キーワード検索"
+               prepend-inner-icon="search"
+               v-model="keyword"
+               clearable)
 </template>
 
 <script>
@@ -9,7 +13,7 @@ export default {
   name: 'SearchByKeyword',
   data () {
     return {
-      keyword: '',
+      keyword: null,
       loading: false
     }
   },

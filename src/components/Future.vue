@@ -33,7 +33,7 @@ export default {
           text: 'エンジニアサイドとビジネスサイドを繋げたい'
         }
       ],
-      tab: ''
+      tab: null
     }
   }
 };

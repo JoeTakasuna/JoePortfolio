@@ -140,12 +140,12 @@ export default {
           selectedOnFilter: false
         }
       },
-      selectedTechOnFilter: ''
+      selectedTechOnFilter: null
     }
   },
   methods: {
     keywordFiltering: function(keyword) {
-      if (keyword === '') {
+      if (keyword === null) {
         this.filteredContents = this.contents
       } else {
         this.filteredContents = this.contents.filter(content => {
@@ -156,7 +156,7 @@ export default {
     techFiltering: function(tech) {
       if (this.selectedTechOnFilter == tech) {
         this.filteredContents = this.contents
-        this.selectedTechOnFilter = ''
+        this.selectedTechOnFilter = null
       } else {
         this.filteredContents = this.contents.filter(content => {
           return content.techs[tech]
@@ -181,7 +181,6 @@ export default {
   display: flex;
 }
 .search-box {
-  max-width: 30vw;
   margin: 12px;
 }
 .card-area {
