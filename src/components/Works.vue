@@ -2,7 +2,10 @@
   .container
     .search-box-area
       .search-box
-        v-select(label="ソート" :items="sortItems" prepend-inner-icon="sort")
+        v-select(label="ソート"
+                 :items="sortItems"
+                 prepend-inner-icon="sort"
+                 disabled)
       .search-box
         SearchByKeyword(@filtering="keywordFiltering")
     .search-button-area
@@ -101,7 +104,7 @@ export default {
         }
       ],
       filteredContents: null,
-      sortItems: ['ソート機能準備中'],
+      sortItems: [],
       techs: {
         python: {
           name: 'Python',
