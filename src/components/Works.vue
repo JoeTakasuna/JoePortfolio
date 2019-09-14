@@ -1,18 +1,17 @@
 <template lang="pug">
   .container
-    .search-area
-      .search
-        .search-box
-          v-select(label="ソート" :items="sortItems" prepend-inner-icon="sort")
-        .search-box
-          SearchByKeyword(@filtering="keywordFiltering")
-      .image-button-area
-        ImageButton(@filtering="techFiltering"
-                    v-for="(tech, index) in techs"
-                    :key="index"
-                    :id="index"
-                    :image="tech.img"
-                    :selectedOnFilter="selectedTechOnFilter==index")
+    .search-box-area
+      .search-box
+        v-select(label="ソート" :items="sortItems" prepend-inner-icon="sort")
+      .search-box
+        SearchByKeyword(@filtering="keywordFiltering")
+    .search-button-area
+      ImageButton(@filtering="techFiltering"
+                  v-for="(tech, index) in techs"
+                  :key="index"
+                  :id="index"
+                  :image="tech.img"
+                  :selectedOnFilter="selectedTechOnFilter==index")
     transition-group.card-area(name="card")
       CardOnGrid(v-for="content in filteredContents"
                  :key="content.id"
@@ -172,21 +171,23 @@ export default {
 </script>
 
 <style scoped>
-.search-area {
+.container {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  align-items: center;
 }
-.search {
+.search-box-area {
   display: flex;
 }
 .search-box {
+  width: 216px;
   margin: 12px;
 }
 .card-area {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  justify-content: center;
 }
 .card-move {
   transition: opacity 500ms, transform 1s;

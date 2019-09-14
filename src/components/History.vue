@@ -122,7 +122,7 @@ export default {
   display: flex;
 }
 .search-box {
-  width: 180px;
+  width: 216px;
   margin: 12px;
 }
 .timeline {
