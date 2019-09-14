@@ -16,10 +16,10 @@ export default {
   data () {
     return {
       genreColor: {
-        main: 'green',
+        main: 'black',
         it: 'blue',
         arch: 'red',
-        hobby: 'black'
+        hobby: 'green'
       }
     }
   },

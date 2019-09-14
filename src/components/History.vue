@@ -2,7 +2,12 @@
   .container
     .search
       .search-box
-        v-select(label="ジャンル検索" :items="genre" multiple)
+        v-select(label="ジャンル検索"
+                 v-model="selectedGenre"
+                 :items="genre"
+                 item-text="name"
+                 item-value="id"
+                 multiple)
       .search-box
         SearchByKeyword(@filtering="keywordFiltering")
     v-timeline.timeline
@@ -24,11 +29,29 @@ export default {
   },
   data () {
     return {
-      genre: ['main', 'it', 'arch', 'hobby'],
+      selectedGenre: [],
+      genre: [
+        {
+          id: 'main',
+          name: 'メイン'
+        },
+        {
+          id: 'it',
+          name: 'IT'
+        },
+        {
+          id: 'arch',
+          name: '建築'
+        },
+        {
+          id: 'hobby',
+          name: '趣味'
+        }
+      ],
       contents: [
         {
           id: 1,
-          title: 'サイト作成',
+          title: '当サイト作成',
           text: 'a',
           date: '2019',
           genre: 'it'
@@ -44,7 +67,7 @@ export default {
           id: 3,
           title: 'エレクトーンを始める',
           text: 'bc',
-          date: '1999',
+          date: '1998',
           genre: 'hobby'
         },
         {
@@ -55,7 +78,7 @@ export default {
           genre: 'main'
         }
       ],
-      filteredContents: null
+      filteredContents: []
     }
   },
   methods: {
@@ -73,6 +96,18 @@ export default {
   },
   mounted: function() {
     this.filteredContents = this.contents
+  },
+  watch: {
+    selectedGenre: function() {
+      if (this.selectedGenre.length === 0) {
+        return this.filteredContents = this.contents
+      }
+      else {
+        this.filteredContents = this.contents.filter(content => {
+          return this.selectedGenre.indexOf(content.genre) >= 0
+        })
+      }
+    }
   }
 };
 </script>
