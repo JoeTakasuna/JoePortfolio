@@ -6,8 +6,10 @@
       .search-box
         SearchByKeyword(@filtering="filtering")
     v-timeline.timeline
-      transition-group.card-area(name="flip")
-        CardOnTimeline(v-for="content in filteredContents" :key="content.id" :content="content")
+      transition-group.card-area(name="card")
+        CardOnTimeline(v-for="content in filteredContents"
+                       :key="content.id"
+                       :content="content")
 </template>
 
 <script>
@@ -26,28 +28,28 @@ export default {
         {
           id: 1,
           title: 'サイト作成',
-          text: 'わーーーーい',
+          text: 'a',
           date: '2019',
           color: 'red'
         },
         {
           id: 2,
           title: '大学入学',
-          text: 'やったーーーーーーー',
+          text: 'ab',
           date: '2013',
           color: 'green'
         },
         {
           id: 3,
           title: 'エレクトーンを始める',
-          text: '楽しい',
+          text: 'bc',
           date: '1999',
           color: 'blue'
         },
         {
           id: 4,
           title: '誕生',
-          text: 'いえーーーーーーい',
+          text: 'abc',
           date: '1994',
           color: 'red'
         }
@@ -91,10 +93,13 @@ export default {
 .timeline {
   width: 60vw;
 }
-.flip-move {
-  transition: transform 1s;
+.card-move {
+  transition: opacity 0s, transform 1s;
 }
-/* .flip-enter, .flip-leave-to {
+.card-enter, .card-leave-to {
   opacity: 0;
-} */
+}
+.card-leave-active {
+  position: absolute;
+}
 </style>

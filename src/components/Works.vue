@@ -12,9 +12,8 @@
                     :key="index"
                     :id="index"
                     :image="tech.img"
-                    :selectedOnFilter="selectedTechOnFilter==index"
-                    )
-    transition-group.card-area(name="flip")
+                    :selectedOnFilter="selectedTechOnFilter==index")
+    transition-group.card-area(name="card")
       CardOnGrid(v-for="content in filteredContents"
                  :key="content.id"
                  :content="content"
@@ -190,13 +189,13 @@ export default {
   flex-direction: row;
   flex-wrap: wrap;
 }
-.flip-move {
+.card-move {
   transition: opacity 500ms, transform 1s;
 }
-.flip-enter, .flip-leave-to {
+.card-enter, .card-leave-to {
   opacity: 0;
 }
-.flip-leave-active {
+.card-leave-active {
   position: absolute;
 }
 </style>
