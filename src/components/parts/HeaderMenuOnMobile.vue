@@ -4,9 +4,10 @@
       v-list
         v-list-item(v-for="linkItem in linkItems"
                     :key="linkItem.name"
-                    @click="toLink(linkItem.path)")
+                    @click="toLink(linkItem)"
+                    :disabled="selectedItem==linkItem")
           v-list-item-action
-            v-icon {{ linkItem.icon }}
+            v-icon(:disabled="selectedItem==linkItem") {{ linkItem.icon }}
           v-list-item-content
             v-list-item-title {{ linkItem.name }}
     v-app-bar.app-bar(app color="light-green")
@@ -46,12 +47,17 @@ export default {
           name: '今後の展望',
           icon: 'call_split'
         }
-      ]
+      ],
+      selectedItem: null
   }),
   methods: {
-    toLink (link) {
-      this.$router.push(link)
+    toLink (linkItem) {
+      this.$router.push(linkItem.path)
+      this.selectedItem = linkItem
     }
+  },
+  mounted () {
+    this.selectedItem = this.linkItems[0]
   }
 };
 </script>

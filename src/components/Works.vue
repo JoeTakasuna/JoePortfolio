@@ -8,13 +8,14 @@
                  disabled)
       v-flex(xs12 sm6 md6).search-box
         SearchByKeyword(@filtering="keywordFiltering")
-    .search-button-area
-      ImageButton(@filtering="techFiltering"
-                  v-for="(tech, index) in techs"
-                  :key="index"
-                  :id="index"
-                  :image="tech.img"
-                  :selectedOnFilter="selectedTechOnFilter==index")
+    v-layout(wrap).search-button-area
+      v-flex(xs12 sm6 md6)
+        ImageButton(@filtering="techFiltering"
+                    v-for="(tech, index) in techs"
+                    :key="index"
+                    :id="index"
+                    :image="tech.img"
+                    :selectedOnFilter="selectedTechOnFilter==index")
     transition-group.card-area(name="card")
       CardOnGrid(v-for="content in filteredContents"
                  :key="content.id"
@@ -193,7 +194,6 @@ export default {
   padding: 0 12px;
 }
 .search-button-area {
-  /* margin-bottom: 24px; */
 }
 .card-area {
   display: flex;

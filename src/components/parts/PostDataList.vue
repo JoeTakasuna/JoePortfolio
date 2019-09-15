@@ -61,7 +61,7 @@ export default {
 
 <style scoped>
 .container {
-  background-color: var(--light);
+  background-color: var(--main);
 }
 .card {
   margin: 6px;
