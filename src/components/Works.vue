@@ -1,12 +1,12 @@
 <template lang="pug">
   .container
-    .search-box-area
-      .search-box
+    v-layout(wrap).search-box-area
+      v-flex(xs12 sm6 md6).search-box
         v-select(label="ソート"
                  :items="sortItems"
                  prepend-inner-icon="sort"
                  disabled)
-      .search-box
+      v-flex(xs12 sm6 md6).search-box
         SearchByKeyword(@filtering="keywordFiltering")
     .search-button-area
       ImageButton(@filtering="techFiltering"
@@ -186,13 +186,14 @@ export default {
 }
 .search-box-area {
   display: flex;
+  flex-direction: row;
 }
 .search-box {
   width: 216px;
-  margin: 12px;
+  padding: 0 12px;
 }
 .search-button-area {
-  margin-bottom: 24px;
+  /* margin-bottom: 24px; */
 }
 .card-area {
   display: flex;

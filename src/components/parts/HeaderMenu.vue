@@ -6,7 +6,7 @@
       v-btn.btn(small outlined) history
     router-link.link(to="/works")
       v-btn.btn(small outlined) works
-    router-link.link(to="/analytics" @click.native="reload")
+    router-link.link(to="/analytics")
       v-btn.btn(small outlined) analytics
     router-link.link(to="/future")
       v-btn.btn(small outlined) future
@@ -14,21 +14,16 @@
 
 <script>
 export default {
-  name: 'HeaderMenu',
-  methods: {
-    reload: function() {
-    }
-  }
+  name: 'HeaderMenu'
 };
 </script>
 
 <style scoped>
 .container {
-  display: inline-block;
   text-align: center;
 }
 .btn {
-  background-color: var(--light);
+  background-color: var(--main);
 }
 .link {
   margin: 12px;

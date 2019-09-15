@@ -1,14 +1,14 @@
 <template lang="pug">
   .container
-    .search
-      .search-box
+    v-layout(wrap).search
+      v-flex(xs12 sm6 md6).search-box
         v-select(label="ジャンル検索"
                  v-model="selectedGenre"
                  :items="genre"
                  item-text="name"
                  item-value="id"
                  multiple)
-      .search-box
+      v-flex(xs12 sm6 md6).search-box
         SearchByKeyword(@filtering="keywordFiltering")
     v-timeline.timeline
       transition-group.card-area(name="card")
@@ -123,7 +123,7 @@ export default {
 }
 .search-box {
   width: 216px;
-  margin: 12px;
+  padding: 0 12px;
 }
 .timeline {
   width: 60vw;
