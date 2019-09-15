@@ -10,6 +10,7 @@
           v-list-item-content
             v-list-item-title {{ linkItem.name }}
     v-app-bar.app-bar(app color="light-green")
+      v-toolbar-title(class="white--text") Joe's Portfolio
       div(class="flex-grow-1")
       v-app-bar-nav-icon(@click.stop="drawer=!drawer")
 </template>
@@ -22,28 +23,28 @@ export default {
       linkItems: [
         {
           path: '/',
-          name: 'home',
+          name: 'ホーム',
           icon: 'home'
         },
         {
           path: '/history',
-          name: 'history',
-          icon: 'home'
+          name: '経歴',
+          icon: 'history'
         },
         {
           path: '/works',
-          name: 'works',
-          icon: 'home'
+          name: '技術・作品',
+          icon: 'work'
         },
         {
           path: '/analytics',
-          name: 'analytics',
-          icon: 'home'
+          name: '分析',
+          icon: 'search'
         },
         {
           path: '/future',
-          name: 'future',
-          icon: 'home'
+          name: '今後の展望',
+          icon: 'call_split'
         }
       ]
   }),
