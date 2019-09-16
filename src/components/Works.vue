@@ -1,20 +1,22 @@
 <template lang="pug">
   .container
-    v-layout(wrap).search-box-area
-      v-flex(xs12 sm6 md6).search-box
+    v-layout(wrap)
+      v-flex.search-box-area(xs12 sm6 md6)
         v-select(label="ソート"
                  :items="sortItems"
                  prepend-inner-icon="sort"
                  disabled)
-      v-flex(xs12 sm6 md6).search-box
+      v-flex.search-box-area(xs12 sm6 md6)
         SearchByKeyword(@filtering="keywordFiltering")
-    v-layout(wrap).search-button-area
-      v-flex(xs12 sm6 md6)
-        ImageButton(@filtering="techFiltering"
-                    v-for="(tech, index) in techs"
-                    :key="index"
+    v-layout(wrap)
+      v-flex.search-button-area(xs3 sm3 md3
+                                v-for="(tech, index) in techs"
+                                :key="index")
+        ImageButton.search-button(@filtering="techFiltering"
                     :id="index"
                     :image="tech.img"
+                    width="48"
+                    height="48"
                     :selectedOnFilter="selectedTechOnFilter==index")
     transition-group.card-area(name="card")
       CardOnGrid(v-for="content in filteredContents"
@@ -186,18 +188,18 @@ export default {
   align-items: center;
 }
 .search-box-area {
-  display: flex;
-  flex-direction: row;
-}
-.search-box {
   width: 216px;
   padding: 0 12px;
 }
 .search-button-area {
+  display: flex;
+  justify-content: center;
+}
+.search-button {
+  margin: 6px;
 }
 .card-area {
   display: flex;
-  flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
 }

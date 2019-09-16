@@ -1,12 +1,11 @@
 <template lang="pug">
-  v-btn.btn(@click="filtering"
-            x-small
-            depressed
-            :outlined="selectedOnFilter"
-            width="48"
-            height="48"
-            )
-    v-img(:src="image" max-width="48")
+  v-btn(@click="filtering"
+        x-small
+        color="grey lighten-3"
+        :elevation="elevationHeight"
+        :width="width"
+        :height="height")
+    v-img(:src="image" :width="width" :height="height")
 </template>
 
 <script>
@@ -15,7 +14,18 @@ export default {
   props: {
     id: String,
     image: String,
+    width: String,
+    height: String,
     selectedOnFilter: Boolean
+  },
+  computed: {
+    elevationHeight () {
+      if (this.selectedOnFilter) {
+        return 10
+      } else {
+        return 0
+      }
+    }
   },
   methods: {
     filtering: function() {
@@ -26,7 +36,5 @@ export default {
 </script>
 
 <style scoped>
-.btn {
-  margin: 6px;
-}
+
 </style>
