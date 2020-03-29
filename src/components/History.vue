@@ -18,6 +18,8 @@
 </template>
 
 <script>
+import axios from 'axios'
+import lodash from 'lodash'
 import SearchByKeyword from './parts/SearchByKeyword.vue'
 import CardOnTimeline from './parts/CardOnTimeline.vue'
 
@@ -31,54 +33,14 @@ export default {
     return {
       selectedGenre: [],
       genre: [
-        {
-          id: 'main',
-          name: 'メイン'
-        },
-        {
-          id: 'it',
-          name: 'IT'
-        },
-        {
-          id: 'arch',
-          name: '建築'
-        },
-        {
-          id: 'hobby',
-          name: '趣味'
-        }
+        { id: 'main', name: 'メイン' },
+        { id: 'it', name: 'IT' },
+        { id: 'arch', name: '建築' },
+        { id: 'hobby', name: '趣味' }
       ],
-      contents: [
-        {
-          id: 1,
-          title: '当サイト作成',
-          text: 'a',
-          date: '2019',
-          genre: 'it'
-        },
-        {
-          id: 2,
-          title: '大学入学',
-          text: 'ab',
-          date: '2013',
-          genre: 'arch'
-        },
-        {
-          id: 3,
-          title: 'エレクトーンを始める',
-          text: 'bc',
-          date: '1998',
-          genre: 'hobby'
-        },
-        {
-          id: 4,
-          title: '誕生',
-          text: 'abc',
-          date: '1994',
-          genre: 'main'
-        }
-      ],
-      filteredContents: []
+      contents: [],
+      filteredContents: [],
+      loading: true
     }
   },
   methods: {
@@ -90,12 +52,20 @@ export default {
       this.filteredContents = this.contents.filter(content => {
         return content.title.indexOf(keyword) != -1
           || content.text.indexOf(keyword) != -1
-          || content.date.indexOf(this.keyword) != -1
+          || content.date.indexOf(keyword) != -1
       })
     }
   },
   mounted: function() {
-    this.filteredContents = this.contents
+    const apiUrl = 'https://script.google.com/macros/s/AKfycby7mLHIV_MIJZMUBnFRRa4TubNHKht2bTL8sMyMqKmYOdNzmUA/exec'
+    axios.get(apiUrl)
+         .then(response => {
+           this.contents = response.data
+           this.filteredContents = lodash.cloneDeep(this.contents)
+         })
+         .finally(() => {
+           this.loading = false
+         })
   },
   watch: {
     selectedGenre: function() {
